@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_10_07_045912) do
     t.string "title"
     t.text "desc"
     t.string "key"
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
