@@ -16,3 +16,4 @@ gemspec
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 gem 'friendly_id', '~> 5.4'
 gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
+gem 'pry-rails', '~> 0.3.9'
