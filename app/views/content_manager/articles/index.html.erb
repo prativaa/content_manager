@@ -1,0 +1,48 @@
+<div class="container">
+  <div id="page-title">
+    <h2>記事一覧</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th class="title">Title</th>
+              <th class="published_at">Published at</th>
+              <th class="updated_at">Updated at</th>
+              <th class="link">Link</th>
+              <th class="cv">CV数</th>
+              <th class="cv">CV一覧</th>
+              <th class="edit">Edit</th>
+              <th class="delete">Delete</th>
+              <th class="status">Status</th>
+              <th class="publish">Publish</th>
+              <th class="unpublish">Unpublish</th>
+            </tr>
+            </thead>
+            <tbody>
+              <% @articles.each do |article| %>
+                <tr id="article_<%= article.id %>">
+                  <%= render partial: 'admin/articles/each_article', locals: {article: article} %> 
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-md-12">
+      <ul class="nav nav-pills">
+      <li class="active"><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li><a href="#">6</a></li>
+      </ul>
+    </div> -->
+  </div>
+</div>

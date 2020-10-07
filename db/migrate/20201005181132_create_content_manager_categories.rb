@@ -5,7 +5,6 @@ class CreateContentManagerCategories < ActiveRecord::Migration[5.1]
       t.string :title
       t.text :desc
       t.string :key
-      t.string :slug
       t.timestamps
     end
   end

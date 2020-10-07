@@ -1,0 +1,42 @@
+<td><%= link_to article.id, admin_analytics_article_path(article)  %></td>
+<td><%= article.title %></td>
+<td><%= article.published_at ? article.published_at.strftime("%y年%m月%d日") : "未公開" %></td>
+<td><%= article.updated_at.strftime("%y年%m月%d日") %></td>
+<td>
+  <a class="btn btn-default" href="/articles/<%= article.slug %>/" target="_blank">
+    <span class="glyphicon glyphicon-play-circle"></span>
+  </a>
+</td>
+<td><%= article.conversions.count %></td>
+<td>
+  <a class="btn btn-default" href="/admin/analytics/article/<%= article.id %>">
+    <span class="glyphicon glyphicon-list"></span>
+  </a>
+</td>
+<td>
+  <a class="btn btn-default" href="/admin/articles/<%= article.id %>/edit">
+    <span class="glyphicon glyphicon-pencil"></span>
+  </a>
+</td>
+<td>
+  <%= link_to admin_article_path(article), class: "btn btn-default",  method: :delete, data: { confirm: "#{article.title}を本当に削除しますか？" } do %>
+    <span class="glyphicon glyphicon-remove"></span>
+  <% end %>
+</td>
+<td><%= article.status_i18n %></td>
+<td>
+  <% if article.status != "published" %>
+    <%= form_for(article, url: admin_toggle_status_path(article, status: 'published'), html: {method: :patch}, remote: true) do |f| %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= f.submit '公開',class: 'btn btn-default',data: { confirm: "#{article.title}を公開しますか？" } %>
+    <% end %>
+  <% end %>
+</td>
+<td>
+  <% if article.status == "published" %>
+    <%= form_for(article, url: admin_toggle_status_path(article, status: 'closed'), html: {method: :patch}, remote: true) do |f| %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= f.submit '公開終了',class: 'btn btn-default' %>
+    <% end %>
+  <% end %>
+</td>

@@ -1,37 +1,9 @@
-# == Schema Information
-#
-# Table name: articles
-#
-#  id              :integer          not null, primary key
-#  key             :string(255)
-#  status          :integer          default("draft")
-#  title           :string(255)
-#  desc            :string(255)
-#  ogp             :string(255)
-#  body            :text(65535)
-#  recommend       :boolean          default(FALSE), not null
-#  slug            :string(255)
-#  published_at    :datetime
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  category_id     :integer
-#  super_recommend :boolean          default(FALSE), not null
-#
-# Indexes
-#
-#  index_articles_on_category_id  (category_id)
-#  index_articles_on_slug         (slug)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (category_id => categories.id)
-#
 module ContentManager
   class Article < ApplicationRecord
     belongs_to :category
 
-    # extend FriendlyId
-    # friendly_id :key, use: %i[slugged history]
+    extend FriendlyId
+    friendly_id :key, use: %i[slugged history]
 
     # mount_uploader :ogp, OgpUploader
 
@@ -55,9 +27,9 @@ module ContentManager
       save
     end
 
-    # def should_generate_new_friendly_id?
-    #   key_changed?
-    # end
+    def should_generate_new_friendly_id?
+      key_changed?
+    end
 
     def publish
       update(published_at: Time.now)

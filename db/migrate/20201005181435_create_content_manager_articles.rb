@@ -10,7 +10,6 @@ class CreateContentManagerArticles < ActiveRecord::Migration[5.1]
       t.boolean :recommend, default: false, null: false
       t.string :slug
       t.datetime "published_at"
-      t.references :content_manager_category, null: false, foreign_key: true
       t.timestamps
     end
   end

@@ -3,7 +3,6 @@ class CreateContentManagerTags < ActiveRecord::Migration[5.1]
     create_table :content_manager_tags do |t|
       t.string :name
       t.string :key
-      t.string :slug
       t.integer :tag_type
       t.timestamps
     end
