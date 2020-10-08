@@ -1,0 +1,35 @@
+<div class="container">
+  <div id="page-title">
+    <h2>カテゴリー 一覧</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th class="title">名前</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+              <% @categories.each do |category| %>
+              <tr>
+                <td><%= category.id %></td>
+                <td><%= category.name %></td>
+                <td>
+                  <a class="btn btn-default" href="/content_manager/categories/<%= category.slug %>/edit">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  </a>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
