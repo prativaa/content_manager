@@ -1,0 +1,93 @@
+<div class="panel">
+  <div class="panel-body">
+    <div class="example-box-wrapper">
+      <%= form_for @article, url: url_path, :html => {class: 'form-horizontal bordered-row', multipart: true} do |f| %>
+        <%# f.error_notification %>
+
+        <div class="form-group">
+          <label for="title" class="col-sm-2 control-label">Title</label>
+          <div class="col-sm-8">
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">URL key</label>
+          <div class="col-sm-8">
+            <div class="input-group">
+              <span class="input-group-addon">http://<%= @site_name %>.jp/articles/</span>
+              <%= f.text_field :key, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="desc" class="col-sm-2 control-label">Description</label>
+          <div class="col-sm-8">
+            <%= f.text_area :desc, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="category" class="col-sm-2 control-label">Category</label>
+          <div class="col-sm-8">
+            <%= f.collection_radio_buttons(:category_id, ContentManager::Category.all, :id, :name) do |b| %>
+              <%= b.label(class: "radio-inline") { b.radio_button + b.text } %>
+            <% end %>
+          </div>
+        </div>
+          <%# f.collection_check_boxes(:conversion_ids, Conversion.all, :id, :title) do |b| %>
+            <%# b.label(class: "checkbox-inline") { b.check_box + b.text} %>
+          <%# end %>
+        <div class="form-group">
+          <label for="recommended" class="col-sm-2 control-label">Recommend</label>
+          <div class="col-sm-8">
+            <%= f.check_box :recommend %>
+            <!-- <input type="checkbox" class="input-switch-alt" style="display: none;">
+            <div id="#undefined" class="switch-toggle" style="display: block;"></div> -->
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="thumbnail" class="col-sm-2 control-label">Image</label>
+          <div class="col-sm-8">
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+              <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px; overflow: hidden;">
+                
+              </div>
+              <div>
+                <%= f.file_field :ogp %>
+                <%= f.hidden_field :ogp_cache %>
+                <button type="button" class="btn btn-default fileinput-exists" id="fileinput-remove" data-dismiss="fileinput">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-10">
+            <label for="body" class="">This article</label>
+            <div class="">
+              <% url = request.base_url+'/content_manager/ckeditor/pictures?CKEditor=article_body&CKEditorFuncNum=1&langCode=ja' %>
+              <a href="<%= url %>"
+                class="btn btn-primary"
+                target="popup"
+                onclick="window.open('<%= url %>','popup','width=600,height=600'); return false;">
+                Add Image
+              </a>
+
+              <%= f.cktext_area :body, class: 'ckeditor', ckeditor: { language: 'ja' } %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="body" class="col-sm-2 control-label">Status</label>
+          <div class="col-sm-8">
+            <%= f.select :status, ContentManager::Article.statuses.keys.to_a, html:{hidden: true }%>
+          </div>
+        </div>
+        <div class="form-group">
+          <p class="col-sm-12 text-center">
+            <%= f.submit 'Submit', {class: 'btn btn-primary'} %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

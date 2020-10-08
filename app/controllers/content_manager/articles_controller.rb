@@ -2,12 +2,14 @@ require_dependency "content_manager/application_controller"
 
 module ContentManager
   class ArticlesController < ApplicationController
-    before_action :tags
+    # before_action :tags
     before_action :recent_articles
+    before_action :set_category, only: :create
+    before_action :set_article, only: %i[edit update destroy]
     include ContentManager::SessionsHelper
 
     def index
-      @articles = Article.all.order('created_at DESC')
+      @articles = Article.all
     end
 
     def new
@@ -18,20 +20,22 @@ module ContentManager
     end
 
     def create
-      @article = Article.new(article_params)
+      binding.pry
+      @article = @category.articles.new(article_params)
+      binding.pry
       if @article.valid?
         @article.save
         @article.publish if @article.status == 'published'
 
         flash[:notice] = 'Article created successfully.'
-        redirect_to '/admin/articles'
+        redirect_to 'content_manager/articles'
       else
-        redirect_to '/admin/articles/new'
+        redirect_to '/content_manager/articles/new'
       end
     end
 
     def edit
-      @categories = Category.all.order('name ASC')
+      # @categories = Category.all.order('name ASC')
       # @conversions = Conversion.all
     end
 
@@ -76,6 +80,11 @@ module ContentManager
 
     def set_article
       @article = Article.friendly.find(params[:id])
+    end
+
+    def set_category
+      binding.pry
+      @category = Category.find(params[:article][:category_id])
     end
 
     # def clean_conversion_ids

@@ -1,6 +1,6 @@
 module ContentManager
   class Category < ApplicationRecord
-    has_many :articles
+    has_many :articles, :class_name => "ContentManager::Article"
     validates :name, :desc, :key, presence: true
 
     extend FriendlyId

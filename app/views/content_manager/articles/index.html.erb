@@ -13,9 +13,6 @@
               <th class="title">Title</th>
               <th class="published_at">Published at</th>
               <th class="updated_at">Updated at</th>
-              <th class="link">Link</th>
-              <th class="cv">CV数</th>
-              <th class="cv">CV一覧</th>
               <th class="edit">Edit</th>
               <th class="delete">Delete</th>
               <th class="status">Status</th>
@@ -26,7 +23,7 @@
             <tbody>
               <% @articles.each do |article| %>
                 <tr id="article_<%= article.id %>">
-                  <%= render partial: 'admin/articles/each_article', locals: {article: article} %> 
+                  <%= render partial: 'each_article', locals: {article: article} %> 
                 </tr>
               <% end %>
             </tbody>

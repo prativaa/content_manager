@@ -1,16 +1,16 @@
 module ContentManager
   class Article < ApplicationRecord
-    belongs_to :category
+    belongs_to :category, :class_name => "ContentManager::Category", :foreign_key => "category_id"
 
     extend FriendlyId
     friendly_id :key, use: %i[slugged history]
 
-    # mount_uploader :ogp, OgpUploader
+    mount_uploader :ogp, ContentManager::OgpUploader
 
-    validates :key, presence: true, uniqueness: true
+    validates :key, presence: true, uniqueness: { case_sensitive: true }
     validates :status, :title, :desc, :body, presence: true
     validates :recommend, inclusion: { in: [true, false] }
-    # validates :super_recommend, inclusion: { in: [true, false] }
+
     delegate :name, to: :category, prefix: true, allow_nil: true
 
     enum status: %i[draft published closed]
