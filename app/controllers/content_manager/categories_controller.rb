@@ -29,7 +29,7 @@ module ContentManager
     def update
       if @category.update(category_params)
         flash[:notice] = 'Category updated successfully'
-        redirect_to admin_categories_path
+        redirect_to categories_path
       else
         flash[:alert] = 'Invalid attributes'
         render :edit

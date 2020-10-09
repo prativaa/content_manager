@@ -17,7 +17,7 @@ module ContentManager
       @tag = Tag.create(tag_params)
       if @tag.valid?
         flash[:notice] = 'Tag created successfully.'
-        redirect_to admin_tags_path
+        redirect_to tags_path
       else
         render :new
       end
@@ -30,7 +30,7 @@ module ContentManager
   
       if @tag.valid?
         flash[:notice] = 'Tag updated successfully.'
-        redirect_to admin_tags_path
+        redirect_to tags_path
       else
         render :edit
       end
@@ -39,7 +39,7 @@ module ContentManager
     def destroy
       if @tag.destroy
         flash[:notice] = 'Tag deleted successfully.'
-        redirect_to admin_tags_path
+        redirect_to tags_path
       else
         flash[:alert] = 'Error deleting tag.'
       end

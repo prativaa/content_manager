@@ -1,0 +1,43 @@
+<div class="container">
+  <div id="page-title">
+    <h2>List of tags</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th class="title">Title</th>
+              <th>Type</th>
+              <th></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+              <% @tags.each do |tag| %>
+              <tr>
+                <td><%= tag.id %></td>
+                <td><%= tag.name %></td>
+                <td><%= tag.tag_type %></td>
+                <td>
+                  <a class="btn btn-default" href="/content_manager/tags/<%= tag.slug %>/edit">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  </a>
+                </td>
+                <td>
+                  <%= link_to tag_path(tag), class: "btn btn-default",  method: :delete do %>
+                    <span class="glyphicon glyphicon-remove"></span>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -20,15 +20,13 @@ module ContentManager
     end
 
     def create
-      binding.pry
       @article = @category.articles.new(article_params)
-      binding.pry
       if @article.valid?
         @article.save
         @article.publish if @article.status == 'published'
 
         flash[:notice] = 'Article created successfully.'
-        redirect_to 'content_manager/articles'
+        redirect_to '/content_manager/articles'
       else
         redirect_to '/content_manager/articles/new'
       end
@@ -47,7 +45,7 @@ module ContentManager
       if @article.valid?
         @article.save
         flash[:notice] = 'Article updated successfully.'
-        redirect_to '/admin/articles'
+        redirect_to 'content_manager/articles'
       else
         render :edit
       end
@@ -56,7 +54,7 @@ module ContentManager
     def destroy
       if @article.destroy
         flash[:notice] = 'Article deleted successfully.'
-        redirect_to admin_articles_path
+        redirect_to articles_path
       else
         flash[:alert] = 'Error deleting article.'
       end
@@ -83,7 +81,6 @@ module ContentManager
     end
 
     def set_category
-      binding.pry
       @category = Category.find(params[:article][:category_id])
     end
 

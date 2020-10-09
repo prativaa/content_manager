@@ -1,7 +1,7 @@
 module ContentManager
   class Tag < ApplicationRecord
     validates :name, presence: true
-    validates :key, presence: true, uniqueness: true
+    validates :key, presence: true, uniqueness: { case_sensitive: true }
     has_and_belongs_to_many :articles
 
     enum tag_type: %i[article facility treatment]
