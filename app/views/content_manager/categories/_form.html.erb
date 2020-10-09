@@ -3,7 +3,7 @@
     <div class="example-box-wrapper">
       <%= form_for @category, url: url_name, :html => {class: 'form-horizontal bordered-row'} do |f| %>
         <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">名前</label>
+          <label for="name" class="col-sm-2 control-label">Title</label>
           <div class="col-sm-8">
             <%= f.text_field :name, class: 'form-control' %>
           </div>
@@ -15,14 +15,14 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">説明</label>
+          <label for="name" class="col-sm-2 control-label">Description</label>
           <div class="col-sm-8">
             <%= f.text_field :desc, class: 'form-control' %>
           </div>
         </div>
         <div class="form-group">
           <p class="col-sm-12 text-center">
-            <%= f.submit '保存', {class: 'btn btn-primary'} %>
+            <%= f.submit 'Submit', {class: 'btn btn-primary'} %>
           </p>
         </div>
       <% end %>
