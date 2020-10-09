@@ -7,8 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="page-wrapper">
+    <div id="page-header">
+      <div id="header-logo">
+        <a href="/admin">
+        </a>
+      </div>
+    </div>
+    <%= render 'partials/sidebar' %>
+    <div id="page-content-wrapper">
+      <div id="page-content">
+        <%= yield %>
+      </div>
+    </div>
 
-<%= yield %>
-
+  </div>
 </body>
 </html>

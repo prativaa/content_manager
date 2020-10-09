@@ -1,0 +1,15 @@
+<td><%= article.id %></td>
+<td><%= article.title %></td>
+<td><%= article.published_at ? article.published_at.strftime("%y年%m月%d日") : "未公開" %></td>
+<td><%= article.updated_at.strftime("%y年%m月%d日") %></td>
+<td>
+  <a class="btn btn-default" href="articles/<%= article.id %>/edit">
+    <span class="glyphicon glyphicon-pencil"></span>
+  </a>
+</td>
+<td>
+  <%= link_to article_path(article), class: "btn btn-default",  method: :delete, data: { confirm: "#{article.title}を本当に削除しますか？" } do %>
+    <span class="glyphicon glyphicon-remove"></span>
+  <% end %>
+</td>
+<td><%= article.status %></td>

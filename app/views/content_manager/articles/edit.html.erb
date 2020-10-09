@@ -1,0 +1,5 @@
+<div id="page-title">
+  <h2>記事編集: <%= @article.title %></h2>
+</div>
+
+<%= render partial: 'form', locals: {url_path: article_path} %>

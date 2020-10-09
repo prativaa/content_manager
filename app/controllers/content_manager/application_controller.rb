@@ -13,7 +13,7 @@ module ContentManager
     end
 
     def recent_articles
-      @recent_articles = Article.published.where(super_recommend: false, recommend: false).order('created_at DESC').limit(4)
+      @recent_articles = Article.published.where(recommend: false).order('created_at DESC').limit(4)
     end
   end
 end
