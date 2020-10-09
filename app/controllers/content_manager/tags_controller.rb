@@ -17,7 +17,7 @@ module ContentManager
       @tag = Tag.create(tag_params)
       if @tag.valid?
         flash[:notice] = 'Tag created successfully.'
-        redirect_to admin_tags_path
+        redirect_to tags_path
       else
         render :new
       end
