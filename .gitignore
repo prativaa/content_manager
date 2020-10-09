@@ -8,32 +8,7 @@
 .DS_Store
 
 # Ignore bundler config.
-/.bundle
-/vendor/bundle/
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
-# Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
-
-/node_modules
-/yarn-error.log
-
-.byebug_history
-
-config/database.yml
-public/assets/**
-# Ignore application configuration
-/config/application.yml
-
-.env
-
-public/uploads/tmp/
-
-**.sass-cache
-spec
+#Ignore log file and tmp cache file
+/spec/dummy/log/**
+/spec/dummy/tmp/cache/**
