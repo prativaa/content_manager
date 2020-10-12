@@ -12,3 +12,22 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+
+gem 'rails', '~> 6.0', '>= 6.0.3.3'
+
+platforms :ruby do
+  gem 'mysql2', '~> 0.5.3'
+  gem 'sass-rails', '~> 6.0'
+  gem 'bcrypt', '~> 3.1', '>= 3.1.16'
+  gem 'friendly_id', '~> 5.4'
+  gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
+  gem 'pry-rails', '~> 0.3.9'
+  
+  gem 'ckeditor', '~> 5.1'
+  gem 'carrierwave', '~> 2.1'
+  gem 'mini_magick', '~> 4.10', '>= 4.10.1'
+  gem 'coffee-rails', '~> 5.0'
+  gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+  gem 'jquery-rails', '~> 4.4'
+
+end
