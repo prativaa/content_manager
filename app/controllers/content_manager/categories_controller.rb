@@ -16,7 +16,7 @@ module ContentManager
       @category = Category.create(category_params)
       if @category.valid?
         flash[:notice] = 'Category created successfully.'
-        redirect_to root_path
+        redirect_to categories_path
       else
         render :new
       end
