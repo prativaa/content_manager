@@ -1,5 +1,5 @@
 require "content_manager/engine"
-
+require "active_support/dependencies"
 module ContentManager
   # Your code goes here...
   mattr_accessor :application_controller_class
